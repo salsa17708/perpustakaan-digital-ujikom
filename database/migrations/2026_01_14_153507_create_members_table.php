@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->id();
+            $table->string('nisn')->unique(); // Identitas unik siswa
+            $table->string('nama');
+            $table->text('alamat');
+            $table->string('nomor_telepon');
             $table->timestamps();
         });
     }
