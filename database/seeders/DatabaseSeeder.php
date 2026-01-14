@@ -3,21 +3,21 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Book; // <--- Jangan lupa import Model Book
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
-
+        // 1. Buat 1 User Admin (Agar Anda bisa login)
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'Admin Perpus',
+            'email' => 'admin@admin.com',
+            'password' => bcrypt('password'), // passwordnya: password
         ]);
+
+        // 2. Buat 10 Data Buku Palsu
+        Book::factory(10)->create(); 
     }
 }
