@@ -1,74 +1,43 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
-use Inertia\Inertia;
+namespace App\Http\Controllers;
+
 use App\Models\Book;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Inertia\Inertia; // <--- Wajib ada
 
 class BookController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        // Mengambil data buku dan dikirim ke Frontend
-    $books = Book::all(); 
-    return Inertia::render('Books/Index', [
-        'books' => $books
-    ]);
+        // 1. Ambil data (Sama seperti logika API)
+        $books = Book::latest()->get();
+
+        // 2. Kirim ke Frontend (Cara Monolith)
+        // 'Books/Index' artinya file ada di resources/js/Pages/Books/Index.jsx
+        return Inertia::render('Books/Index', [
+            'books' => $books
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        // Mengambil data buku dan dikirim ke Frontend
-    $books = Book::all(); 
-    return Inertia::render('Books/Index', [
-        'books' => $books
-    ]);
+        // Menampilkan halaman Form Tambah Buku
+        return Inertia::render('Books/Create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
-    }
+        // Validasi & Simpan Data (Logic sama persis kayak API)
+        $validated = $request->validate([
+            'title' => 'required',
+            'author' => 'required',
+            'stock' => 'required|integer',
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+        Book::create($validated);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        // Bedanya disini: Kalau API return JSON, kalau Monolith kita Redirect
+        return redirect()->route('books.index')->with('message', 'Buku berhasil ditambahkan!');
     }
 }

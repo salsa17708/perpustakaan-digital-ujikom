@@ -4,8 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\BookController;
-use App\Http\Controllers\Admin\MemberController;
-use App\Http\Controllers\Admin\LoanController;
+
 use Inertia\Inertia;
 
 Route::middleware(['auth', 'verified'])->group(function () {
