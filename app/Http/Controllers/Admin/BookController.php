@@ -29,16 +29,21 @@ class BookController extends Controller
 
     public function store(Request $request)
     {
-        // Validasi & Simpan Data (Logic sama persis kayak API)
+        // 1. Validasi Input
+        // Kita pastikan data yang dikirim user sesuai aturan
         $validated = $request->validate([
-            'title' => 'required',
-            'author' => 'required',
-            'stock' => 'required|integer',
+            'title' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
+            'stock' => 'required|integer|min:0',
+            // 'description' => 'nullable|string' // Jika nanti ada deskripsi
         ]);
 
+        // 2. Simpan ke Database
+        // Karena nama input form sama dengan nama kolom database, kita bisa langsung pakai create
         Book::create($validated);
 
-        // Bedanya disini: Kalau API return JSON, kalau Monolith kita Redirect
-        return redirect()->route('books.index')->with('message', 'Buku berhasil ditambahkan!');
+        // 3. Redirect (Kembali ke Halaman Utama)
+        // Kita pakai 'to_route' supaya lebih singkat, plus kirim pesan sukses (opsional)
+        return to_route('books.index')->with('message', 'Buku berhasil ditambahkan!');
     }
 }
