@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use Inertia\Inertia;
+use App\Models\Book;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,11 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
+        // Mengambil data buku dan dikirim ke Frontend
+    $books = Book::all(); 
+    return Inertia::render('Books/Index', [
+        'books' => $books
+    ]);
     }
 
     /**
@@ -20,7 +25,11 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        // Mengambil data buku dan dikirim ke Frontend
+    $books = Book::all(); 
+    return Inertia::render('Books/Index', [
+        'books' => $books
+    ]);
     }
 
     /**
