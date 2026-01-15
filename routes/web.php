@@ -9,10 +9,8 @@ use App\Http\Controllers\Admin\LoanController;
 use Inertia\Inertia;
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    // Ini akan otomatis membuat jalur index, create, store, edit, update, destroy
+    // Gunakan ini. Jangan pakai route::apiResource
     Route::resource('books', BookController::class);
-    Route::resource('members', MemberController::class);
-    Route::resource('loans', LoanController::class);
 });
 
 Route::get('/', function () {
