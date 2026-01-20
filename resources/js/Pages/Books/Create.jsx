@@ -16,7 +16,7 @@ export default function Create({ auth }) {
 
     return (
         <AuthenticatedLayout
-            user={auth.admin}
+            user={auth.user}
             header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Tambah Buku</h2>}
         >
             <Head title="Tambah Buku" />
