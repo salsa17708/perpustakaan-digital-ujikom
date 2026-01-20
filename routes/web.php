@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\BookController;
 
 use Inertia\Inertia;
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     // Gunakan ini. Jangan pakai route::apiResource
     Route::resource('books', BookController::class);
 });
