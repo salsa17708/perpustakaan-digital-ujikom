@@ -16,7 +16,7 @@ export default function Create({ auth }) {
 
     return (
         <AuthenticatedLayout
-            user={auth.user}
+            user={auth.admin}
             header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Tambah Buku</h2>}
         >
             <Head title="Tambah Buku" />
@@ -24,11 +24,14 @@ export default function Create({ auth }) {
                 <div className="max-w-2xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white p-6 shadow-sm rounded-lg">
                         <form onSubmit={submit}>
-                            <div className="mb-4">
-                                <label className="block text-gray-700 text-sm font-bold mb-2">Judul</label>
-                                <input type="text" value={data.title} onChange={(e) => setData('title', e.target.value)} className="border rounded w-full py-2 px-3" />
-                                <div className="text-red-500 text-sm">{errors.title}</div>
-                            </div>
+                            <div>
+    <InputLabel value="Judul Buku" />
+    <TextInput 
+        className="mt-1 block w-full" 
+        value={data.title}
+        onChange={(e) => setData('title', e.target.value)}
+    />
+</div>
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-bold mb-2">Penulis</label>
                                 <input type="text" value={data.author} onChange={(e) => setData('author', e.target.value)} className="border rounded w-full py-2 px-3" />
@@ -39,8 +42,9 @@ export default function Create({ auth }) {
                                 <input type="number" value={data.stock} onChange={(e) => setData('stock', e.target.value)} className="border rounded w-full py-2 px-3" />
                                 <div className="text-red-500 text-sm">{errors.stock}</div>
                             </div>
-                            <button type="submit" disabled={processing} className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Simpan</button>
-                        </form>
+<PrimaryButton disabled={processing}>
+    Simpan Buku
+</PrimaryButton>                        </form>
                     </div>
                 </div>
             </div>
