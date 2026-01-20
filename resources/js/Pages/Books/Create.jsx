@@ -25,7 +25,7 @@ export default function Create({ auth }) {
                     <div className="bg-white p-6 shadow-sm rounded-lg">
                         <form onSubmit={submit}>
                             <div>
-    <InputLabel value="Judul Buku" />
+    <InputLabel value="title Buku" />
     <TextInput 
         className="mt-1 block w-full" 
         value={data.title}
@@ -33,12 +33,12 @@ export default function Create({ auth }) {
     />
 </div>
                             <div className="mb-4">
-                                <label className="block text-gray-700 text-sm font-bold mb-2">Penulis</label>
+                                <label className="block text-gray-700 text-sm font-bold mb-2">author</label>
                                 <input type="text" value={data.author} onChange={(e) => setData('author', e.target.value)} className="border rounded w-full py-2 px-3" />
                                 <div className="text-red-500 text-sm">{errors.author}</div>
                             </div>
                             <div className="mb-4">
-                                <label className="block text-gray-700 text-sm font-bold mb-2">Stok</label>
+                                <label className="block text-gray-700 text-sm font-bold mb-2">stock</label>
                                 <input type="number" value={data.stock} onChange={(e) => setData('stock', e.target.value)} className="border rounded w-full py-2 px-3" />
                                 <div className="text-red-500 text-sm">{errors.stock}</div>
                             </div>

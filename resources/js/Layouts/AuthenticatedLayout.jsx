@@ -32,10 +32,10 @@ export default function AuthenticatedLayout({ header, children }) {
                                 </NavLink>
                                 {user.role === 'admin' && (
                                     <NavLink
-                                        href={route('users.index')}
-                                        active={route().current('users.index')}
+                                        href={route('books.index')}
+                                        active={route().current('books.index')}
                                     >
-                                        Manajemen User
+                                        Manajemen Buku
                                     </NavLink>
                                 )}
                             </div>

@@ -22,18 +22,18 @@ export default function Index({ auth, books }) {
                         <table className="min-w-full border border-gray-200">
                             <thead className="bg-gray-50">
                                 <tr>
-                                    <th className="px-4 py-2 text-left border-b text-gray-700">Judul</th>
-                                    <th className="px-4 py-2 text-left border-b text-gray-700">Penulis</th>
-                                    <th className="px-4 py-2 text-left border-b text-gray-700">Stok</th>
+                                    <th className="px-4 py-2 text-left border-b text-gray-700">title</th>
+                                    <th className="px-4 py-2 text-left border-b text-gray-700">author</th>
+                                    <th className="px-4 py-2 text-left border-b text-gray-700">stock</th>
                                     <th className="px-4 py-2 text-left border-b text-gray-700">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {/* Menggunakan data.map karena data dibungkus Resource */}
-                                {books.data.length === 0 ? (
+                                {books.length === 0 ? (
                                     <tr><td colSpan="4" className="px-4 py-6 text-center text-gray-500">Data Kosong</td></tr>
                                 ) : (
-                                    books.data.map((book) => (
+                                    books.map((book) => (
                                         <tr key={book.id} className="hover:bg-gray-50">
                                             <td className="px-4 py-3 border-b">{book.title}</td>
                                             <td className="px-4 py-3 border-b">{book.author}</td>
