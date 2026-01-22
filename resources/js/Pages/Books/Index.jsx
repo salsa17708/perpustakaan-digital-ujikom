@@ -24,6 +24,7 @@ export default function Index({ auth, books }) {
                                 <tr>
                                     <th className="px-4 py-2 text-left border-b text-gray-700">title</th>
                                     <th className="px-4 py-2 text-left border-b text-gray-700">author</th>
+                                     <th className="px-4 py-2 text-left border-b text-gray-700">tahun</th>
                                     <th className="px-4 py-2 text-left border-b text-gray-700">stock</th>
                                     <th className="px-4 py-2 text-left border-b text-gray-700">Aksi</th>
                                 </tr>
@@ -37,8 +38,11 @@ export default function Index({ auth, books }) {
                                         <tr key={book.id} className="hover:bg-gray-50">
                                             <td className="px-4 py-3 border-b">{book.title}</td>
                                             <td className="px-4 py-3 border-b">{book.author}</td>
+                                            <td className="px-4 py-3 border-b">{book.publication_year}</td>
                                             <td className="px-4 py-3 border-b">{book.stock}</td>
-                                            <td className="px-4 py-3 border-b text-blue-600">Edit | Hapus</td>
+                                            <td className="px-4 py-3 border-b text-blue-600">
+                                                <Link href={route('books.edit', book.id)}>Edit</Link>
+                                            </td>
                                         </tr>
                                     ))
                                 )}

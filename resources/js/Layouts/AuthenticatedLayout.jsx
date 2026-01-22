@@ -38,6 +38,7 @@ export default function AuthenticatedLayout({ header, children }) {
                                         Manajemen Buku
                                     </NavLink>
                                 )}
+                                
                             </div>
                         </div>
 
