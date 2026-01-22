@@ -48,4 +48,29 @@ class BookController extends Controller
         // Kita pakai 'to_route' supaya lebih singkat, plus kirim pesan sukses (opsional)
         return to_route('books.index')->with('message', 'Buku berhasil ditambahkan!');
     }
+    public function edit(Book $book)
+    {
+        return inertia('Books/Edit', [
+            'book' => $book
+        ]);
+    }
+
+    // 2. SIMPAN PERUBAHAN (Update ke Database)
+    public function update(Request $request, Book $book)
+    {
+        // Validasi input (Sama seperti create)
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
+            'publisher' => 'required|string|max:255',
+            'year' => 'required|integer',
+            'stock' => 'required|integer',
+        ]);
+
+        // Lakukan Update
+        $book->update($request->all());
+
+        // Kembali ke daftar buku
+        return redirect()->route('books.index');
+    }
 }
