@@ -42,6 +42,7 @@ export default function Index({ auth, books }) {
                                             <td className="px-4 py-3 border-b">{book.stock}</td>
                                             <td className="px-4 py-3 border-b text-blue-600">
                                                 <Link href={route('books.edit', book.id)}>Edit</Link>
+                                                <Link href={route('books.destroy', book.id)}>Delete</Link>
                                             </td>
                                         </tr>
                                     ))

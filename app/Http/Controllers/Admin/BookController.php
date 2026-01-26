@@ -29,7 +29,7 @@ class BookController extends Controller
 
     public function store(Request $request)
     {
-        // 1. Validasi Input
+        // Validasi Input
         // Kita pastikan data yang dikirim user sesuai aturan
         $validated = $request->validate([
             'title' => 'required|string|max:255',
@@ -40,7 +40,7 @@ class BookController extends Controller
             // 'description' => 'nullable|string' // Jika nanti ada deskripsi
         ]);
 
-        // 2. Simpan ke Database
+        // Simpan ke Database
         // Karena nama input form sama dengan nama kolom database, kita bisa langsung pakai create
         Book::create($validated);
 
