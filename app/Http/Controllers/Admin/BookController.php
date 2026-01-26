@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Book;
 use Illuminate\Http\Request;
-use Inertia\Inertia; // <--- Wajib ada
+use Inertia\Inertia; 
 
 class BookController extends Controller
 {
@@ -48,14 +48,14 @@ class BookController extends Controller
         // Kita pakai 'to_route' supaya lebih singkat, plus kirim pesan sukses (opsional)
         return to_route('books.index')->with('message', 'Buku berhasil ditambahkan!');
     }
+
     public function edit(Book $book)
     {
         return inertia('Books/Edit', [
             'book' => $book
         ]);
     }
-
-    // 2. SIMPAN PERUBAHAN (Update ke Database)
+   
     public function update(Request $request, Book $book)
     {
         // Validasi input (Sama seperti create)
@@ -72,5 +72,14 @@ class BookController extends Controller
 
         // Kembali ke daftar buku
         return redirect()->route('books.index');
+    }
+
+    public function destroy(Book $book)
+    {
+        // Hapus buku dari database
+        $book->delete();
+
+        // Kembali ke daftar buku dengan pesan sukses
+        return to_route('books.index')->with('message', 'Buku berhasil dihapus!');
     }
 }
