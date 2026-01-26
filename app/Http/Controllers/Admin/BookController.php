@@ -35,7 +35,7 @@ class BookController extends Controller
             'title' => 'required|string|max:255',
             'author' => 'required|string|max:255',
             'publisher' => 'required|string|max:255',
-            'publication_year' => 'required|integer|min:1000|max:' . date('Y'),
+            'year' => 'required|integer|min:1000|max:' . date('Y'),
             'stock' => 'required|integer|min:0',
             // 'description' => 'nullable|string' // Jika nanti ada deskripsi
         ]);

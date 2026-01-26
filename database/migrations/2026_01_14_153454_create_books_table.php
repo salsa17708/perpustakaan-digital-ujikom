@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('author');
             $table->string('publisher');
-            $table->integer('publication_year');
+            $table->integer('year');
             $table->integer('stock'); // Penting untuk validasi peminjaman
             $table->timestamps();
         });

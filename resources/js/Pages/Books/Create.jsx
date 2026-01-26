@@ -7,7 +7,7 @@ export default function Create({ auth }) {
         title: '',
         author: '',
         publisher: '',
-        publication_year: '',
+        year: '',
         stock: ''
     });
 
@@ -72,10 +72,10 @@ export default function Create({ auth }) {
                                     <input 
                                         type="number" 
                                         className="border rounded w-full py-2 px-3 text-gray-700"
-                                        value={data.publication_year}
-                                        onChange={(e) => setData('publication_year', e.target.value)}
+                                        value={data.year}
+                                        onChange={(e) => setData('year', e.target.value)}
                                     />
-                                    {errors.publication_year && <div className="text-red-500 text-sm mt-1">{errors.publication_year}</div>}
+                                    {errors.year && <div className="text-red-500 text-sm mt-1">{errors.year}</div>}
                                 </div>
 
                                 {/* Input Stok */}
