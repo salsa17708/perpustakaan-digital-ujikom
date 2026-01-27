@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'Admin Perpus',
             'email' => 'admin@sekolah.id',
-            'password' => bcrypt('passwordd'), // Password: password
+            'password' => bcrypt('password'), // Password: password
             'role' => 'admin',
         ]);
 
@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'Siswa Contoh',
             'email' => 'siswa@sekolah.id',
-            'password' => bcrypt('password'),
+            'password' => bcrypt('murid123'),
             'role' => 'user',
         ]);
     }
