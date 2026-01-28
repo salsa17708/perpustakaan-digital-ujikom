@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('books', function (Blueprint $table) {
             $table->id();
-            $table->string('judul');
-            $table->string('penulis');
-            $table->string('penerbit');
-            $table->integer('tahun_terbit');
-            $table->integer('stok'); // Penting untuk validasi peminjaman
+            $table->string('title');
+            $table->string('author');
+            $table->string('publisher');
+            $table->integer('year');
+            $table->integer('stock'); // Penting untuk validasi peminjaman
             $table->timestamps();
         });
     }

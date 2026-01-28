@@ -11,10 +11,10 @@ class Book extends Model
 
     // Definisikan kolom yang boleh diisi oleh Admin
     protected $fillable = [
-        'judul',
-        'penulis',
-        'penerbit',
-        'tahun_terbit',
-        'stok',
+        'title',
+        'author',
+        'publisher',
+        'year',
+        'stock',
     ];
 }

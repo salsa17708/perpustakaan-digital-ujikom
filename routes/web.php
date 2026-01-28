@@ -3,7 +3,14 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\BookController;
+
 use Inertia\Inertia;
+
+Route::middleware(['auth', 'verified', 'admin'])->group(function () {
+    // Gunakan ini. Jangan pakai route::apiResource
+    Route::resource('books', BookController::class);
+});
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
